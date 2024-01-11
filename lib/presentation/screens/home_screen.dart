@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lesson_20_setstate/ui/theme/app_colors.dart';
-import 'package:lesson_20_setstate/ui/theme/app_fonts.dart';
-import 'package:lesson_20_setstate/ui/widgets/custom_button.dart';
-import 'package:lesson_20_setstate/ui/widgets/custom_circle_avatar.dart';
-import 'package:lesson_20_setstate/ui/widgets/custom_text_field.dart';
+import 'package:lesson_20_setstate/presentation/theme/app_colors.dart';
+import 'package:lesson_20_setstate/presentation/theme/app_fonts.dart';
+import 'package:lesson_20_setstate/presentation/widgets/custom_button.dart';
+import 'package:lesson_20_setstate/presentation/widgets/custom_circle_avatar.dart';
+import 'package:lesson_20_setstate/presentation/widgets/custom_text_field.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final contrillerName = TextEditingController();
+  @override
   Widget build(BuildContext context) {
+    print('object');
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -34,7 +41,8 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 66.h,
                 ),
-                const CustomTextField(
+                CustomTextField(
+                  controller: contrillerName,
                   hintText: 'Alex Miron',
                   lableText: 'Name',
                 ),
@@ -62,8 +70,16 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 116.h,
+                  child: Text(
+                    contrillerName.text,
+                  ),
                 ),
-                const CustomButton()
+                CustomButton(
+                  title: 'Get location',
+                  onPressed: () {
+                    setState(() {});
+                  },
+                )
               ],
             ),
           ),

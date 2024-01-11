@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lesson_20_setstate/ui/theme/app_colors.dart';
-import 'package:lesson_20_setstate/ui/theme/app_fonts.dart';
+import 'package:lesson_20_setstate/presentation/theme/app_colors.dart';
+import 'package:lesson_20_setstate/presentation/theme/app_fonts.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
+    required this.title,
+    required this.onPressed,
   });
-
+  final String title;
+  final Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,9 +23,9 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
-          'Get location',
+          title,
           style: AppFonts.s16w500.copyWith(
             color: AppColors.white,
           ),
